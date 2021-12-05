@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FormControl, MenuItem, Select } from '@mui/material';
 
-import Header from './components/Header';
-
-function App() {
+const Header = () => {
 	const [countries, setCountries] = useState([]);
 	const [country, setCountry] = useState('worldwide');
 
@@ -30,21 +28,18 @@ function App() {
 	};
 
 	return (
-		<div className='app'>
-			<Header />
-			{/* <div className='app__header'>
-				<h1>COVID19 Tracker</h1>
-				<FormControl className='app__dropdown'>
-					<Select variant='outlined' onChange={onCountryChange} value={country}>
-						<MenuItem value='worldwide'>Worldwide</MenuItem>
-						{countries.map((country) => (
-							<MenuItem value={country.value}>{country.name}</MenuItem>
-						))}
-					</Select>
-				</FormControl>
-			</div> */}
+		<div className='app__header'>
+			<h1>COVID19 Tracker</h1>
+			<FormControl className='app__dropdown'>
+				<Select variant='outlined' onChange={onCountryChange} value={country}>
+					<MenuItem value='worldwide'>Worldwide</MenuItem>
+					{countries.map((country) => (
+						<MenuItem value={country.value}>{country.name}</MenuItem>
+					))}
+				</Select>
+			</FormControl>
 		</div>
 	);
-}
+};
 
-export default App;
+export default Header;
