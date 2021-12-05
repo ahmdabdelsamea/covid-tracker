@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FormControl, MenuItem, Select } from '@mui/material';
 
-const Header = () => {
+const Header = ({ trackCovid, country }) => {
 	const [countries, setCountries] = useState([]);
-	const [country, setCountry] = useState('worldwide');
 
 	useEffect(() => {
 		const getCountriesData = async () => {
@@ -23,8 +22,7 @@ const Header = () => {
 	}, []);
 
 	const onCountryChange = (event) => {
-		const countryCode = event.target.value;
-		setCountry(countryCode);
+		trackCovid(event);
 	};
 
 	return (

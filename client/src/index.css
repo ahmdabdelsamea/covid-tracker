@@ -1,9 +1,25 @@
-* {
+*,
+*::before,
+*::after,
+body {
+	box-sizing: border-box;
 	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
 }
 
 body {
 	background-color: #f5f6fa;
+}
+
+.app {
+	display: flex;
+	justify-content: space-evenly;
+	padding: 20px;
+}
+
+.app__left {
+	flex: 0.9;
 }
 
 .app__header {
@@ -16,4 +32,10 @@ body {
 .app__stats {
 	display: flex;
 	justify-content: space-between;
+}
+
+@media (max-width: 990px) {
+	.app {
+		flex-direction: column;
+	}
 }
