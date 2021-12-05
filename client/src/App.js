@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@mui/material';
 
 import Header from './components/Header';
@@ -8,6 +8,14 @@ import Map from './components/Map';
 function App() {
 	const [country, setCountry] = useState('worldwide');
 	const [countryInfo, setCountryInfo] = useState({});
+
+	useEffect(() => {
+		fetch('https://disease.sh/v3/covid-19/all')
+			.then((response) => response.json())
+			.then((data) => {
+				setCountryInfo(data);
+			});
+	}, []);
 
 	const trackCovid = async (event) => {
 		const countryCode = event.target.value;

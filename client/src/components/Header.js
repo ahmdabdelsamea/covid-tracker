@@ -11,6 +11,7 @@ const Header = ({ trackCovid, country }) => {
 				.then((data) => {
 					const countries = data.map((result) => ({
 						name: result.country,
+						id: result.countryInfo._id,
 						value: result.countryInfo.iso2,
 					}));
 
@@ -32,7 +33,9 @@ const Header = ({ trackCovid, country }) => {
 				<Select variant='outlined' onChange={onCountryChange} value={country}>
 					<MenuItem value='worldwide'>Worldwide</MenuItem>
 					{countries.map((country) => (
-						<MenuItem value={country.value}>{country.name}</MenuItem>
+						<MenuItem key={country.id} value={country.value}>
+							{country.name}
+						</MenuItem>
 					))}
 				</Select>
 			</FormControl>
