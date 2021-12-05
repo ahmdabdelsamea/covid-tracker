@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FormControl, MenuItem, Select } from '@mui/material';
 
 import Header from './components/Header';
+import InfoBox from './components/InfoBox';
 
 function App() {
 	const [countries, setCountries] = useState([]);
@@ -32,6 +33,12 @@ function App() {
 	return (
 		<div className='app'>
 			<Header />
+			<div className='app__stats'>
+				<InfoBox title='Coronavirus Cases' cases={299} total={5000} />
+				<InfoBox title='Recovered' cases={299} total={5000} />
+				<InfoBox title='Deaths' cases={299} total={5000} />
+			</div>
+
 			{/* <div className='app__header'>
 				<h1>COVID19 Tracker</h1>
 				<FormControl className='app__dropdown'>
