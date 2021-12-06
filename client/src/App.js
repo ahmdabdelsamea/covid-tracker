@@ -5,7 +5,8 @@ import { Card, CardContent } from '@mui/material';
 import Header from './components/Header';
 import InfoBox from './components/InfoBox';
 import Map from './components/Map';
-import Table from './components/Table/index.js';
+import Table from './components/Table';
+import LineGraph from './components/LineGraph';
 
 // utils
 import { sortData } from './utils';
@@ -94,6 +95,7 @@ function App() {
 					<h3>Live Cases by Country</h3>
 					<Table countries={tableData} />
 					<h3>Worldwide new Cases</h3>
+					<LineGraph />
 				</CardContent>
 			</Card>
 		</div>
