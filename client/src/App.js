@@ -11,11 +11,17 @@ import LineGraph from './components/LineGraph';
 // utils
 import { sortData } from './utils';
 
+// styles
+import 'leaflet/dist/leaflet.css';
+
 function App() {
 	const [country, setCountry] = useState('worldwide');
 	const [countryInfo, setCountryInfo] = useState({});
 	const [countries, setCountries] = useState([]);
 	const [tableData, setTableData] = useState([]);
+	const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+	const [mapZoom, setMapZoom] = useState(3);
+	const [mapCountries, setMapCountries] = useState([]);
 
 	// fetch worldwide data
 	useEffect(() => {
@@ -38,14 +44,15 @@ function App() {
 						value: result.countryInfo.iso2,
 					}));
 
-					const sortedData = sortData(data);
-					setTableData(sortedData);
+					let sortedData = sortData(data);
 					setCountries(countries);
+					setMapCountries(data);
+					setTableData(sortedData);
 				});
 		};
 
 		getCountriesData();
-	}, []);
+	}, [mapCenter]);
 
 	const trackCovid = async (event) => {
 		const countryCode = event.target.value;
@@ -58,9 +65,12 @@ function App() {
 		await fetch(url)
 			.then((response) => response.json())
 			.then((data) => {
-				setCountry(countryCode);
 				setCountryInfo(data);
+				setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+				setMapZoom(4);
 			});
+
+		setCountry(countryCode);
 	};
 
 	return (
@@ -88,7 +98,12 @@ function App() {
 						total={countryInfo.deaths}
 					/>
 				</div>
-				<Map />
+				<Map
+					countries={mapCountries}
+					// casesType={casesType}
+					center={mapCenter}
+					zoom={mapZoom}
+				/>
 			</div>
 			<Card className='app__right'>
 				<CardContent>
