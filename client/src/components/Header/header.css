@@ -1,0 +1,14 @@
+.app__header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	justify-content: space-between;
+}
+
+.app__header > h1 {
+	font-size: 2rem;
+}
+
+.app__dropdown {
+	background-color: #fff;
+}

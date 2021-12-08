@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormControl, MenuItem, Select } from '@mui/material';
+import './header.css';
 
 const Header = ({ trackCovid, country, countries }) => {
 	const onCountryChange = (event) => {
