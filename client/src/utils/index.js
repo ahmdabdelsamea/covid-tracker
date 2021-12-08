@@ -75,3 +75,6 @@ export const sortData = (data) => {
 
 // 	return sortedData;
 // };
+
+export const prettyStat = (stat) =>
+	stat ? `+${numeral(stat).format('0.0a')}` : '+0';

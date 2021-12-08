@@ -9,7 +9,7 @@ import Table from './components/Table';
 import LineGraph from './components/LineGraph';
 
 // utils
-import { sortData } from './utils';
+import { sortData, prettyStat } from './utils';
 
 // styles
 import 'leaflet/dist/leaflet.css';
@@ -84,18 +84,18 @@ function App() {
 				<div className='app__stats'>
 					<InfoBox
 						title='Coronavirus Cases'
-						cases={countryInfo.todayCases}
-						total={countryInfo.cases}
+						cases={prettyStat(countryInfo.todayCases)}
+						total={prettyStat(countryInfo.cases)}
 					/>
 					<InfoBox
 						title='Recovered'
-						cases={countryInfo.todayRecovered}
-						total={countryInfo.recovered}
+						cases={prettyStat(countryInfo.todayRecovered)}
+						total={prettyStat(countryInfo.recovered)}
 					/>
 					<InfoBox
 						title='Deaths'
-						cases={countryInfo.todayDeaths}
-						total={countryInfo.deaths}
+						cases={prettyStat(countryInfo.todayDeaths)}
+						total={prettyStat(countryInfo.deaths)}
 					/>
 				</div>
 				<Map
