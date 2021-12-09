@@ -20,7 +20,7 @@ function App() {
 	const [countryInfo, setCountryInfo] = useState({});
 	const [countries, setCountries] = useState([]);
 	const [tableData, setTableData] = useState([]);
-	const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+	const [mapCenter, setMapCenter] = useState({ lat: 34, lng: -40 });
 	const [mapZoom, setMapZoom] = useState(3);
 	const [mapCountries, setMapCountries] = useState([]);
 	const [casesType, setCasesType] = useState('cases');
@@ -77,53 +77,57 @@ function App() {
 
 	return (
 		<div className='app'>
-			<div className='app__left'>
-				<Header
-					country={country}
-					trackCovid={trackCovid}
-					countries={countries}
-				/>
-				<div className='app__stats'>
-					<InfoBox
-						isCases
-						active={casesType === 'cases'}
-						onClick={(e) => setCasesType('cases')}
-						title='Coronavirus Cases'
-						cases={prettyStat(countryInfo.todayCases)}
-						total={prettyStat(countryInfo.cases)}
-					/>
-					<InfoBox
-						isRecovered
-						active={casesType === 'recovered'}
-						onClick={(e) => setCasesType('recovered')}
-						title='Recovered'
-						cases={prettyStat(countryInfo.todayRecovered)}
-						total={prettyStat(countryInfo.recovered)}
-					/>
-					<InfoBox
-						isDeaths
-						active={casesType === 'deaths'}
-						onClick={(e) => setCasesType('deaths')}
-						title='Deaths'
-						cases={prettyStat(countryInfo.todayDeaths)}
-						total={prettyStat(countryInfo.deaths)}
+			<div className='app__top'>
+				{/* <h3 className='app__graphTitle'>Worldwide new {casesType}</h3> */}
+				<LineGraph className='app__graph' casesType={casesType} />
+			</div>
+			<div className='app__bottom'>
+				<div className='app__left'>
+					<div className='app__stats'>
+						<InfoBox
+							isCases
+							active={casesType === 'cases'}
+							onClick={(e) => setCasesType('cases')}
+							title='Cases'
+							cases={prettyStat(countryInfo.todayCases)}
+							total={prettyStat(countryInfo.cases)}
+						/>
+						<InfoBox
+							isDeaths
+							active={casesType === 'deaths'}
+							onClick={(e) => setCasesType('deaths')}
+							title='Deaths'
+							cases={prettyStat(countryInfo.todayDeaths)}
+							total={prettyStat(countryInfo.deaths)}
+						/>
+						<InfoBox
+							isRecovered
+							active={casesType === 'recovered'}
+							onClick={(e) => setCasesType('recovered')}
+							title='Recovered'
+							cases={prettyStat(countryInfo.todayRecovered)}
+							total={prettyStat(countryInfo.recovered)}
+						/>
+					</div>
+					<Map
+						countries={mapCountries}
+						casesType={casesType}
+						center={mapCenter}
+						zoom={mapZoom}
 					/>
 				</div>
-				<Map
-					countries={mapCountries}
-					casesType={casesType}
-					center={mapCenter}
-					zoom={mapZoom}
-				/>
+
+				<Card className='app__right'>
+					<CardContent>
+						<Header
+							country={country}
+							trackCovid={trackCovid}
+							countries={countries}
+						/>
+						<Table countries={tableData} />
+					</CardContent>
+				</Card>
 			</div>
-			<Card className='app__right'>
-				<CardContent>
-					<h3>Live Cases by Country</h3>
-					<Table countries={tableData} />
-					<h3 className='app__graphTitle'>Worldwide new {casesType}</h3>
-					<LineGraph className='app__graph' casesType={casesType} />
-				</CardContent>
-			</Card>
 		</div>
 	);
 }

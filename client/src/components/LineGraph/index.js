@@ -76,7 +76,6 @@ function LineGraph({ casesType = 'cases', ...props }) {
 				.then((data) => {
 					let chartData = buildChartData(data, casesType);
 					setData(chartData);
-					console.log(chartData);
 				});
 		};
 
@@ -93,8 +92,20 @@ function LineGraph({ casesType = 'cases', ...props }) {
 								label: 'Cases',
 								data: data,
 								fill: true,
-								backgroundColor: 'rgba(204, 16, 52, 0.5)',
-								borderColor: '#CC1034',
+								backgroundColor: `${
+									casesType === 'cases'
+										? 'rgba(204, 16, 52, 0.5)'
+										: casesType === 'deaths'
+										? 'rgba(255, 187, 16, 0.5)'
+										: '#82e71550'
+								}`,
+								borderColor: `${
+									casesType === 'cases'
+										? 'rgba(204, 16, 52, 1)'
+										: casesType === 'deaths'
+										? 'rgba(255, 187, 16, 1)'
+										: '#82e715'
+								}`,
 							},
 						],
 					}}

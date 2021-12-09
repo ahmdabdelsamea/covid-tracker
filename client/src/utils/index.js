@@ -19,8 +19,9 @@ const casesTypeColors = {
 
 // draw circles on the map
 export const showDataOnMap = (data, caseType = 'cases') =>
-	data.map((country) => (
+	data.map((country, index) => (
 		<Circle
+			key={index}
 			center={[country.countryInfo.lat, country.countryInfo.long]}
 			fillOpacity={0.4}
 			color={casesTypeColors[caseType].hex}

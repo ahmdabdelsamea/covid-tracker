@@ -38,7 +38,8 @@ const InfoBox = ({
 					{cases}
 				</h2>
 				<Typography className='infoBox__total' color='textSecondary'>
-					{total} total
+					{total}
+					<span>Total</span>
 				</Typography>
 			</CardContent>
 		</Card>

@@ -1,14 +1,33 @@
 .infoBox {
 	flex: 1;
 	cursor: pointer;
+	border-radius: 1rem !important;
+
+	background: #1a1a1a !important;
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.9) !important;
+	backdrop-filter: blur(15px) !important;
+	-webkit-backdrop-filter: blur(15px) !important;
+	transition: 0.5s ease !important;
+}
+
+.infoBox:hover {
+	transform: translateY(-8px);
+}
+
+.MuiCardContent-root {
+	padding-bottom: 1rem !important;
 }
 
 .infoBox:not(:last-child) {
 	margin-right: 15px;
 }
 
+.title {
+	color: #ccc !important;
+}
+
 .infoBox--selected {
-	border-bottom: 10px solid #cc1034;
+	border-bottom: 1rem solid #cc1034;
 }
 
 .infoBox--red {
@@ -16,17 +35,16 @@
 }
 
 .infoBox--green {
-	border-color: #7dd71d;
+	border-color: #82e715;
 }
 
 .infoBox--yellow {
-	border-color: #fb1;
+	border-color: rgb(255, 187, 16);
 }
 
 .infoBox__cases {
 	font-weight: bold;
 	font-size: 1.6rem;
-	margin-bottom: 0.5rem;
 }
 
 .infoBox--cases--red {
@@ -34,16 +52,46 @@
 }
 
 .infoBox--cases--green {
-	color: #7dd71d !important;
+	color: #82e715 !important;
 }
 
 .infoBox--cases--yellow {
-	color: #fb1 !important;
+	color: rgb(255, 187, 16) !important;
 }
 
 .infoBox__total {
-	color: #6c757d;
+	color: #fff !important;
 	font-weight: bold !important;
 	font-size: 1rem !important;
-	margin-top: 1rem !important;
+	margin-top: 0.5rem !important;
+}
+
+.infoBox__total span {
+	display: block;
+	color: #ccc;
+	text-transform: uppercase !important;
+	font-size: 0.8rem !important;
+}
+
+@media (max-width: 600px) {
+	.infoBox:not(:last-child) {
+		margin-right: 10px;
+	}
+
+	.title {
+		font-size: 0.8rem !important;
+	}
+
+	.infoBox__cases {
+		font-size: 1.2rem;
+	}
+
+	.infoBox__total {
+		font-size: 0.8rem !important;
+		margin-top: 1rem !important;
+	}
+
+	.infoBox__total p {
+		font-size: 0.6rem !important;
+	}
 }

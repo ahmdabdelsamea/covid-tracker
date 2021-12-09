@@ -13,8 +13,8 @@ const Header = ({ trackCovid, country, countries }) => {
 			<FormControl className='app__dropdown'>
 				<Select variant='outlined' onChange={onCountryChange} value={country}>
 					<MenuItem value='worldwide'>Worldwide</MenuItem>
-					{countries.map((country) => (
-						<MenuItem key={country.id} value={country.value}>
+					{countries.map((country, index) => (
+						<MenuItem key={index} value={country.value}>
 							{country.name}
 						</MenuItem>
 					))}
