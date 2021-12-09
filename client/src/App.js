@@ -64,22 +64,36 @@ function App() {
 				? 'https://disease.sh/v3/covid-19/all'
 				: `https://disease.sh/v3/covid-19/countries/${countryCode}`;
 
-		await fetch(url)
-			.then((response) => response.json())
-			.then((data) => {
-				setCountryInfo(data);
-				setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-				setMapZoom(4);
-			});
-
-		setCountry(countryCode);
+		if (countryCode === 'worldwide') {
+			await fetch(url)
+				.then((response) => response.json())
+				.then((data) => {
+					setCountryInfo(data);
+					setMapCenter({ lat: 34, lng: -40 });
+					setMapZoom(2);
+				});
+			setCountry(countryCode);
+		} else {
+			await fetch(url)
+				.then((response) => response.json())
+				.then((data) => {
+					setCountryInfo(data);
+					setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+					setMapZoom(4);
+				});
+			setCountry(countryCode);
+		}
 	};
 
 	return (
 		<div className='app'>
 			<div className='app__top'>
 				{/* <h3 className='app__graphTitle'>Worldwide new {casesType}</h3> */}
-				<LineGraph className='app__graph' casesType={casesType} />
+				<LineGraph
+					className='app__graph'
+					countryCode={country}
+					casesType={casesType}
+				/>
 			</div>
 			<div className='app__bottom'>
 				<div className='app__left'>
