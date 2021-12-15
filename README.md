@@ -9,7 +9,7 @@
 ### Demo :chart:
 
 Use the dropdown menu to track COVID19 cases, deaths and recovered in each country or worldwide  
-[COVID19 Tracker](https://spotify-clone-kappa-two.vercel.app/login)
+[COVID19 Tracker](https://covid-19-tracker-6be22.web.app/)
 
 ### Prerequisite :hammer_and_wrench:
 
@@ -20,12 +20,12 @@ Make sure you have these installed
 
 ### Instructions :gear:
 
-1. Clone this repository into your local machine using the terminal (mac) or Gitbash (PC) `git clone https://github.com/ahmdabdelsamea/spotify-clone.git`
-2. CD to the folder `cd spotify-clone`
+1. Clone this repository into your local machine using the terminal (mac) or Gitbash (PC) `git clone https://github.com/ahmdabdelsamea/covid-tracker.git`
+2. CD to the folder `cd covid-tracker`
 3. Run `npm install` to install the project dependencies
 4. Run `npm start` to run the project at http://localhost:3000
 
-### :rocket: Technologies
+### Technologies :rocket:
 
 - [React](https://reactjs.org/)
 - [leaflet](https://leafletjs.com/)
